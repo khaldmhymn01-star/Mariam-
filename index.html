@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#780018">
+<title>مريم ❤️ أحمد</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 50% 30%, #c4143b 0%, transparent 55%),
+        linear-gradient(145deg, #30000c, #79001c, #41000e);
+}
+
+.background-glow {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    background: #ff1744;
+    filter: blur(120px);
+    opacity: .35;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.glow1 { top: 5%; right: -130px; }
+.glow2 { bottom: 5%; left: -130px; }
+
+header {
+    padding: 35px 15px 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.small-title {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #ffc2d0;
+}
+
+h1 {
+    font-size: clamp(35px, 10vw, 58px);
+    margin: 8px 0;
+    color: #fff1f4;
+    text-shadow: 0 0 15px #ff315d, 0 0 35px #ff003c;
+}
+
+.names {
+    font-size: 23px;
+    color: #ffd1dc;
+    margin-top: 5px;
+}
+
+.main-heart {
+    display: inline-block;
+    color: #ff1744;
+    font-size: 32px;
+    animation: heartbeat 1.2s infinite;
+    filter: drop-shadow(0 0 10px #ff002f);
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.25); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.18); }
+}
+
+.subtitle {
+    color: #ffdbe3;
+    font-size: 14px;
+    margin: 15px 10px 25px;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    min-height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    z-index: 2;
+}
+
+.envelope {
+    position: relative;
+    width: min(310px, 82vw);
+    height: 190px;
+    cursor: pointer;
+    filter: drop-shadow(0 15px 25px #1b000b99);
+    transition: transform .4s;
+}
+
+.envelope:hover {
+    transform: translateY(-4px);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #ffccd8, #ff7796);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.letter {
+    position: absolute;
+    width: 88%;
+    height: 165px;
+    left: 6%;
+    top: 9px;
+    background: #fff8f0;
+    color: #870021;
+    border-radius: 5px;
+    z-index: 2;
+    padding: 15px 10px;
+    transition: transform 1s ease, height 1s ease;
+    box-shadow: 0 0 10px #5b0019;
+}
+
+.letter .letter-heart {
+    font-size: 30px;
+    margin: 0;
+}
+
+.letter p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 6px 0;
+}
+
+.letter .tap-note {
+    font-size: 11px;
+    color: #b52c4e;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: linear-gradient(145deg, #ff9bb1, #f33c69);
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 5px;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #ffb4c5;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform .8s ease;
+    z-index: 5;
+}
+
+.seal {
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #a0002a;
+    border: 2px solid #ffd8e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    box-shadow: 0 0 15px #a0002a88;
+    transition: opacity .3s;
+}
+
+.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.open .seal {
+    opacity: 0;
+}
+
+.open .letter {
+    transform: translateY(-125px);
+    height: 250px;
+    z-index: 7;
+    transition-delay: .35s;
+}
+
+.open .envelope-front {
+    z-index: 4;
+}
+
+.open .letter .tap-note {
+    display: none;
+}
+
+.open .letter {
+    overflow: visible;
+}
+
+#loveMessage {
+    display: none;
+    position: relative;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease;
+}
+
+#loveMessage.show {
+    display: block;
+    max-height: 2500px;
+}
+
+.message-card {
+    width: min(90%, 520px);
+    margin: 15px auto 30px;
+    padding: 25px 20px;
+    border: 1px solid #ff9caf88;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #650019dd, #35000dcc);
+    box-shadow: 0 0 35px #ff174422, inset 0 0 20px #ff17440a;
+    text-align: right;
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message-card h2 {
+    text-align: center;
+    color: #ffbdce;
+    font-size: 26px;
+}
+
+.message-card p {
+    color: #fff0f3;
+    font-family: 'Amiri', serif;
+    font-size: 19px;
+    line-height: 2.1;
+    margin: 13px 0;
+}
+
+.signature {
+    text-align: center;
+    color: #ff9eb5;
+    font-size: 23px;
+    margin-top: 25px;
+}
+
+.music-box {
+    width: min(90%, 420px);
+    margin: 30px auto;
+    padding: 20px 15px;
+    border: 1px solid #ff8ba6;
+    border-radius: 20px;
+    background: #4c0018aa;
+    box-shadow: 0 0 25px #ff174422;
+    position: relative;
+    z-index: 2;
+}
+
+.music-box h3 {
+    margin: 0 0 8px;
+    color: #ffc4d2;
+}
+
+.music-box p {
+    font-size: 12px;
+    color: #ffdce5;
+}
+
+.music-box iframe {
+    display: block;
+    width: 100%;
+    height: 190px;
+    border: 0;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.music-button {
+    border: 1px solid #ffb4c6;
+    background: linear-gradient(135deg, #ff537b, #c90036);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff174433;
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    color: #ffbdce;
+    font-size: 13px;
+    padding: 15px 10px 30px;
+}
+
+.floating {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+    opacity: .8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: .8; }
+    85% { opacity: .7; }
+    100% {
+        transform: translateY(-115vh) rotate(40deg);
+        opacity: 0;
+    }
+}
+
+/* غيوم ناعمة على الحواف */
+
+.cloud {
+    position: fixed;
+    width: 150px;
+    height: 45px;
+    background: #ffdbe4;
+    opacity: .13;
+    border-radius: 50px;
+    filter: blur(2px);
+    z-index: 0;
+    pointer-events: none;
+    animation: cloudMove 12s ease-in-out infinite alternate;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: #ffdbe4;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 65px;
+    height: 65px;
+    top: -28px;
+    left: 20px;
+}
+
+.cloud::after {
+    width: 80px;
+    height: 80px;
+    top: -38px;
+    right: 20px;
+}
+
+.cloud1 {
+    top: 24%;
+    left: -65px;
+}
+
+.cloud2 {
+    top: 60%;
+    right: -65px;
+    animation-delay: -4s;
+}
+
+.cloud3 {
+    bottom: 8%;
+    left: -80px;
+    animation-delay: -7s;
+}
+
+@keyframes cloudMove {
+    from { transform: translateX(-10px); }
+    to { transform: translateX(35px); }
+}
+
+.sparkle {
+    position: fixed;
+    color: #ffe6ec;
+    pointer-events: none;
+    z-index: 1;
+    animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.8); }
+    to { opacity: .9; transform: scale(1.3); }
+}
+
+@media (max-width: 360px) {
+    .envelope { height: 170px; }
+    .message-card p { font-size: 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow glow1"></div>
+<div class="background-glow glow2"></div>
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+
+<header>
+    <div class="small-title">A SPECIAL LOVE STORY</div>
+    <h1>مريم</h1>
+    <div class="names">
+        <span>أحمد</span>
+        <span class="main-heart"> ♥ </span>
+        <span>مريم</span>
+    </div>
+    <p class="subtitle">إلى أجمل إنسانة سكنت گلبي ❤️</p>
+</header>
+
+<main>
+    <div class="scene">
+        <div class="envelope" id="envelope" onclick="openLetter()">
+
+            <div class="envelope-back"></div>
+
+            <div class="letter">
+                <div class="letter-heart">❤️</div>
+                <p><strong>إلى مريم، حبيبة أحمد</strong></p>
+                <p>عندي إلج كلام طالع من گلبي...</p>
+                <p class="tap-note">اضغطي على الظرف حتى تقرين رسالتي 💌</p>
+            </div>
+
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="seal">♥</div>
+
+        </div>
+    </div>
+
+    <section id="loveMessage">
+        <div class="message-card">
+
+            <h2>إلى مريم ❤️</h2>
+
+            <p>
+                مريــــم، يا أجمل صدفة صارت بحياتي،
+                ويا أحلى شي دخل لقلبي ❤️🥹
+            </p>
+
+            <p>
+                يمكن ما أعرف أوصفلج شكد أحبج،
+                ويمكن كل كلام الدنيا ما يكفي حتى أوصلج شعوري،
+                بس والله إنتِ مو مجرد إنسانة أحبها،
+                إنتِ راحتي وفرحتي والشي الحلو اللي يخليني أبتسم
+                حتى بأصعب أيامي. ❤️‍🩹
+            </p>
+
+            <p>
+                مريم، أحبج بكل تفاصيلج، بصوتج، بضحكتج،
+                بحچيچ، وحتى بزعلج ودلالج.
+                أحب وجودج بحياتي، وأحب شعوري من أشوف اسمج
+                يضوي بشاشتي، وكأن الدنيا كلها تصير أحلى بوجودج. 💗
+            </p>
+
+            <p>
+                آني أحمد، وإذا عندي أمنية بهالدنيا،
+                فهي أبقى الشخص اللي يفرّح قلبج،
+                واللي تلجئين إله من تضوجين،
+                واللي تحسين وياه بالأمان،
+                واللي كل يوم يثبتلج إن اختياره إلج
+                مو مجرد كلام، وإنما حب من كل گلبي. ❤️‍🔥
+            </p>
+
+            <p>
+                ما أريد من الدنيا شي أكثر من أشوفج بخير،
+                وأشوف ضحكتج ما تفارق وجهج،
+                وأكون سبب من أسباب سعادتج.
+                وإذا الأيام يوم صارت صعبة علينا،
+                أتمنى نبقى متمسكين ببعض،
+                لأن بالنسبة إلي إنتِ مو حب عابر،
+                إنتِ إنسانة أتمنى تبقى وياي بكل أيامي الجاية. 🫂
+            </p>
+
+            <p>
+                أحبج يا مريم، حب أحمد اللي ما يشبه حب أي أحد،
+                وأريدج تعرفين إن إلج بگلبي مكان محد يكدر ياخذه،
+                وإنج مو بس حبيبتي،
+                إنتِ قطعة من روحي وأحلى حكاية أتمنى ما تخلص أبد. 💍❤️
+            </p>
+
+            <p>
+                وإذا يوم سألوني شنو أحلى شي صار بحياتك؟
+                راح أبتسم وأگول:
+                <strong>مريم، لأن هي أجمل شي اختاره گلبي.</strong> 🥹
+            </p>
+
+            <div class="signature">
+                من أحمد إلى مريم<br>
+                أحبج يا روحي ❤️
+            </div>
+
+        </div>
+    </section>
+
+    <section class="music-box">
+        <h3>🎵 أغنيتنا يا مريم</h3>
+        <p>خلي الأغنية تكمّل الكلام اللي بگلبي إلج ❤️</p>
+
+        <button class="music-button" onclick="showMusic()">
+            ❤️ شغّلي أغنيتنا
+        </button>
+
+        <div id="musicPlayer" style="display:none">
+            <iframe
+                src="https://www.youtube.com/embed/D708VGoGcbg?playsinline=1"
+                title="أغنية مريم وأحمد"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+</main>
+
+<footer>
+    صُنعت بكل الحب ❤️<br>
+    أحمد ♥ مريم
+    <p>إنتِ أجمل حكاية بگلبي 💌</p>
+</footer>
+
+<script>
+let isOpen = false;
+
+function openLetter() {
+    const envelope = document.getElementById('envelope');
+    const message = document.getElementById('loveMessage');
+
+    if (!isOpen) {
+        envelope.classList.add('open');
+        isOpen = true;
+
+        setTimeout(() => {
+            message.classList.add('show');
+
+            setTimeout(() => {
+                message.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 150);
+
+            createBurst();
+        }, 900);
+
+    } else {
+        envelope.classList.remove('open');
+        message.classList.remove('show');
+        isOpen = false;
+    }
+}
+
+function showMusic() {
+    const player = document.getElementById('musicPlayer');
+    player.style.display = 'block';
+
+    setTimeout(() => {
+        player.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }, 100);
+}
+
+// قلوب تطير بالخلفية
+
+const symbols = ['❤️', '💕', '💗', '💖', '💘', '♥'];
+
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating';
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (14 + Math.random() * 23) + 'px';
+
+    const duration = 7 + Math.random() * 8;
+    heart.style.animationDuration = duration + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), duration * 1000);
+}
+
+setInterval(createHeart, 650);
+
+// انفجار قلوب عند فتح الرسالة
+
+function createBurst() {
+    for (let i = 0; i < 24; i++) {
+        setTimeout(createHeart, i * 65);
+    }
+}
+
+// نجوم صغيرة
+
+for (let i = 0; i < 22; i++) {
+    const star = document.createElement('div');
+    star.className = 'sparkle';
+    star.textContent = '✦';
+
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.fontSize = (8 + Math.random() * 12) + 'px';
+    star.style.animationDelay = Math.random() * 3 + 's';
+
+    document.body.appendChild(star);
+}
+</script>
+
+</body>
+  </html>
